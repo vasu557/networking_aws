@@ -1,0 +1,1157 @@
+amazon-server version
+gui shell in linux - gnome
+			     kde
+cli shell in linux - sh(shell)
+                   	    bash(bourne again shell - mostly used because most advanced and popular)
+ 			    k shell
+			    z shell 
+			    c shell
+
+bash shell-[ec2-user@ip-172-31-21-128 ~]$ 
+$- it says that u r login to linux as a standard account(not administrator account)
+administrator account also known as root account
+
+To get root prevalizes use - sudo su (command)
+[root@ip-172-31-21-128 ec2-user]# 
+here # - it is root (administrator) account
+ again to go back to standard ($)account  -  exit 
+
+commands
+
+sudo su - this command used to move from standard ($) account - root account(#) ($ - #)
+exit - this command used to come back from root account to standard account(# - $)
+ls - list of files
+ls -l ( gives more information about file like who created, when, and permissions of that file)
+pwd -  print working directory
+cat - to create the files
+	syntax : cat > (file name)
+            (statements)
+
+             use ctrl+z
+
+    example:  [ec2-user@ip-172-31-21-128 ~]$ cat > file1
+hii vasu
+ 
+To see content of the file:
+syntax : cat (file name)
+example :[ec2-user@ip-172-31-21-128 ~]$ cat file1
+hii vasu
+
+to add some information to the existing file
+syntax: cat >> (file name)
+example:
+==>[ec2-user@ip-172-31-21-128 ~]$ cat >> file1
+    this is vasu
+^Z
+ ==>cat file1
+       hii vasu
+     this is vasu
+if u create a new file with the file name as already existing file name
+then it will automatically replaces the existing file data
+ example:
+==> cat > file1
+           this is newly created file with the same file name of previously created one
+    ctrl + z
+==>cat file1
+      this is newly created file with the same file name of previously created one     
+
+    ( ==>cat file1
+       hii vasu
+     this is vasu) this data was deleted 
+
+==>ls -la =
+        it shows the hidden files and directories
+==>mkdir 
+      It is used to create the directory
+   syntax : mkdir directory name)
+ ==> cd - change the directory
+     syntax: cd directory name
+==>cd (directory1/directory2) -
+        used to change directly from 1st directory to 3rd directory or ( home directory - dir 2)
+          
+ ==> cd ..  = used to move to previous directory
+ ==> cd ../.. = used to move from dir2 to home directory
+
+                
+
+
+
+[ec2-user@ip-172-31-17-151 ~]$ ls -la
+total 12
+drwx------. 3 ec2-user ec2-user  74 Jun 14 09:51 .
+drwxr-xr-x. 3 root     root      22 Jun 14 09:51 ..
+-rw-r--r--. 1 ec2-user ec2-user  18 Jan 28  2023 .bash_logout
+-rw-r--r--. 1 ec2-user ec2-user 141 Jan 28  2023 .bash_profile
+-rw-r--r--. 1 ec2-user ec2-user 492 Jan 28  2023 .bashrc
+drwx------. 2 ec2-user ec2-user  29 Jun 14 09:51 .ssh
+[ec2-user@ip-172-31-17-151 ~]$ mkdir dir1
+[ec2-user@ip-172-31-17-151 ~]$ ls -l
+total 0
+drwxr-xr-x. 2 ec2-user ec2-user 6 Jun 14 10:18 dir1
+[ec2-user@ip-172-31-17-151 ~]$ cd dir1
+[ec2-user@ip-172-31-17-151 dir1]$ pwd
+/home/ec2-user/dir1
+[ec2-user@ip-172-31-17-151 dir1]$ cat > file1
+this file is in directory  one dir1
+^Z
+[1]+  Stopped                 cat > file1
+[ec2-user@ip-172-31-17-151 dir1]$ cat file1
+this file is in directory  one dir1
+[ec2-user@ip-172-31-17-151 dir1]$ cd ..
+[ec2-user@ip-172-31-17-151 ~]$ cd ..
+[ec2-user@ip-172-31-17-151 home]$ cd ec2-user
+[ec2-user@ip-172-31-17-151 ~]$ cd dir1
+[ec2-user@ip-172-31-17-151 dir1]$ pwd
+/home/ec2-user/dir1
+[ec2-user@ip-172-31-17-151 dir1]$ cd ..
+[ec2-user@ip-172-31-17-151 ~]$ cd ..
+[ec2-user@ip-172-31-17-151 home]$ pwd
+/home
+[ec2-user@ip-172-31-17-151 home]$ cd ec2-user/dir1
+[ec2-user@ip-172-31-17-151 dir1]$ pwd
+/home/ec2-user/dir1
+[ec2-user@ip-172-31-17-151 dir1]$
+
+
+jun-15
+
+rm - remove the file
+   rm filename
+==>rm - r = used to remove the directory
+   rm -r directoty name
+==>rm - rf = forcely deleting the directory
+     rm - rf dirname
+==>man - it is a help command give information about file/ directory
+      man ( any command)
+==>touch - used to create the empty file
+                        or
+               used to change the time stamp
+      and by using touch coma
+
+
+==>kernel version - uname - r
+==> yum update -  to check any updates available from amazon linux
+==>editiong tools
+-----vi - 
+-----vim - used to edit the file
+    just like (cat >> ) but difference is
+   cat >> = is used to add some extra information
+  but 
+  vim = in this we can add/ delete 
+  synatx: vim filename
+modes:
+    read only mode -  default (in this reading only possible)
+  insert mode - if we want to delete/add the data then we have to goto insert mode
+vimtutor - gives about vim commands
+----nano - used to create and edit the file
+
+june -18 (tuesday)
+
+==>/home- standard users takes place here-provide working environment for users
+==>/etc - all the configuration file will be found in etc directory
+==>ctrl + c - this key combination is used to kill the current running process in linux.
+==>/etc/passwd - contains brief information  about all the users present in linux.
+   to see that - vim passwd or cat passwd
+==>/etc/shadow it contains passwords information not (actual password) like when the password was created.
+==>/etc/group - contains info about users group 
+==> date- gives date
+==>cal - calender
+==>timedatectl - gives more infoabout date and dime
+==>head - gives the first 10 lines of the file ( by default)
+     head (file name)
+==> head -n 2 filename- gives first 2 lines (user wish)
+==>tail - it gives last 10 lines of the file
+     tail (filename)
+==>tail -n 2 passwd =gives last two lines of the file (user wish)
+              tail -n 2 filename
+
+
+==>useradd thub - to add users - can be possible with only by root user
+==> userdel (username) -  used to delete the user
+==>whoami -  to know the current user
+==> su username - to change the user
+       # - we can directly change the user in root account
+       su vasu - change to vasu
+-     -->$ - if we try change the user in standard user
+          it asks password 
+           that password will be created by root
+  ==> passwd (username) - used tp change the  password of that user
+
+
+configuration  - nano  /etc/ssh/sshd_config
+
+ssh root@ip-address
+
+june-19
+
+
+==>chmod -  it is used to change the permissions .
+    chmod u-w   filename = removing the  write permission
+    chmod u+w  filename = add the write permission
+  ==> chmod g+w filename = giving write permission to group
+==> chmod o+w filename = giving write permission to others
+chmod in numeric format - 4 - read(r)
+					   2-write(w)
+					   1- execute(x)
+         -->chmod 777 filename - giving all permissions
+         -->chmod 7 filename - giving all permissions to other
+	--> chmod 77 fikename - giving all permissions to group,others
+	  -->chmod 877 filename - invalid
+
+                                            
+
+
+
+june -20
+
+cloud characteristics
+. on-demand self service : When ever we want we can launch server.it is on demand. we can launch any no servers at a time based on demand.
+. broad network access : submarine cable map website 
+. resource pooling :The resources are not exhausted .It predict about resources and fill it.so the resources are always available
+. elasticity: increase or decrease of resources based on user needs
+. measured service: using of resources and for it is measured and we have to pay for how much time we used.
+
+CLOUD SERVICES
+
+Iaas - infracrure(provides only hardw
+Paas - platform as a service
+Saas - software as a service
+xaas - anything as a service 
+              
+june - 21
+
+CLOUD DEPLOYMENT MODELS
+ 
+private cloud 
+public cloud
+community cloud
+hybrid coud - combination of private + public
+
+AWS GLOBAL INFRACTURE
+
+aws regions - geographical locations
+              Availability zones: 2 
+	     data centers:2 or more
+
+regions -->AZs -->data center -->physIcal resources -->data
+
+
+   
+33- regions
+105 - availability zones
+
+june - 22
+
+connecting cmd by using pem - ssh -i dell.pem ubuntu@(public IP address)
+ssh - secure shell - protocal -22
+telnet protocal- 23
+rdp - remote desktop protocal - 3389
+==> windows username - administrator
+
+
+june -24
+
+deploying the website in virtual machine(amazon-linux)
+
+data-content
+security group - http(hyper text transition protocol)
+webserver application-httpd
+os- amazon linux
+hardware
+
+==>launch amazon linux instance and connect
+==>go to root user and do - yum update(1)
+==>install the application-(yum install httpd)-----2
+==>allow the port no 80 in the security group that allows the website to deploy in the server
+==>command: systemctl start httpd-----3
+==>goto - cd /usr/share/httpd/noindex/
+      cat index.html
+
+deploying the website in virtual machine(ubuntu)
+
+
+data -content
+security group - 80 - http
+apache2(apt-get-install apache2)
+os -ubuntu
+hardware
+
+steps:
+
+==>launch ubuntu instance and connect
+==>go to root user and do =( apt-get update)
+==>install the application - (apache2)
+==>allow the port no 80 in the security group that allows the website to deploy in the server
+                         security group - 80 - http
+==>systemctl start apache2
+==>sample webpage - copy public IP address and browse
+==>goto - cd 
+--------------------------------------------------
+june 25 - 2024
+remote connections(important port numbers)
+
+RDP - 3389 -windows -secured--> (encrypted)
+SSH - 22 - linux - secured -->(encrypted)
+TELNET - 23 - linux unsecured -->(plain text)
+ -----
+file transfer protocols
+
+1)SFTP - secure file transfer protocol -22 - used to transfer the files but not write in bash shells
+FTP - file transfer protocol- 21 - not secure
+----
+web server protocals
+
+http : 80 -not secured
+https -secures http - 443 -secured
+-----------------------------------------------------------------------------------------
+june 26
+
+==>linux - httpd - /usr/share/httpd/noindex
+             in that noindex directory we have - index.html file
+
+==>ubuntu - apache2 website - /var/www/html/
+                         index.html file
+
+==>we can deploy nginx website in both linux and ubuntu servers
+
+nginx - ubuntu - /var/www/html/
+           - index.html
+           - we can add our own templates in that index.html file
+
+-------------------------------------------------------------------------------------------
+
+
+deploying websites in windows server
+
+--->start server manager
+-->option2 (add roles)
+--->click next 
+-->add webserver
+-->click next - next - and install
+filepath - goto C-drive/inetpub /wwwroot
+                 in that inetpub we have - iisstart-delete it -
+and create one text file -save it as - index.html
+---------------------------------------------------------------------------
+iis = internet information service
+init 0 - to stop the instance
+init 6 - is used to restart the instance
+-------------------------------------------------------------------------------
+
+june 27
+
+#!/bin/bash
+sudo su
+apt-get update -y
+apt install apache2 -y
+systemctl start apache2
+
+-------------------------------------------------------------------------------
+june 28
+
+chmod 777 /var/www/html
+rm /var/www/html/index.html
+touch /var/www/html/index.html
+ echo "this is technical hub " > /var/www/html/index.html
+systemctl start apache2
+
+deploying website in PAAS
+
+compute - elastic beanstalk -
+     crate appliacati - select webserver environment--
+  -->give application name
+  -->domain - givw domain name(check availability - is used to check that domain is available or not)
+-->platform type - Tomcat
+-->configuration presets - high availability
+--->
+-->key pair - vockey
+-->
+                   next
+--->select 1st vpc
+-->
+
+july - 1
+
+AWS VPC -virtual private cloud - network service
+               -->creating private network - deploying network resources and get connected.
+NETWORK - communication
+protocol - rules
+-----------------------------------------------
+Network=>communication
+Protocols =>Set of rules
+Internet => The Internet is a collection of interconnected computers, sharing data and services.
+
+A network is a collection of computer systems and devices that are linked together utilizing LAN, WAN, CAN(campus area network), or HAN(Home area network). The internet is a global system that connects various sorts of electric devices worldwide.
+
+Intranet => An intranet can be defined as a private network used by an organization.
+Extranet =>An extranet is a private network similar to an intranet, but typically open to external parties, such as business partners, suppliers, key customers, etc. The main purpose of an extranet is to allow users to exchange data and applications, and share information.
+
+addresses=>MAC(media access control) addresses =>getmac command to get the mac address of the interface like bluetooth,etc =>mac also called physical address
+		    IPV4 addresses =>these three are the type of addresses that we used in concept of cloud ,in those three =>mostly ipv4 is used
+		    IPv6 addresses
+	in cmd,  ipconfig  is the command used to get the ipv4 address.
+note : we can get ip address only if we connect to any server like router or anything, in other words ip address is assigned only when your are connected for communication
+
+The Reverse Address Resolution Protocol (RARP) is a networking protocol that is used to map a physical (MAC) address to an Internet Protocol (IP) address. It is the reverse of the more commonly used Address Resolution Protocol (ARP), which maps an IP address to a MAC address.
+         in linux => ifconfig (interface config) => to get ip address for linux computers
+	 in ubuntu => ip addr show  => to get ip address in ubuntu computers
+         in window => ipconfig => to get ip address
+				
+				ipconfig /all => to get both mac & ip address and also the information about the interface.
+
+				ping => command used to check the connectivity between your device and destination or whether you can connect to  the destiation or  not or health 				checking  , eg => ping google.com , ping facebook.com
+				you can ping with ipv4 addresses too, you can know the ip address of the destination too,when you ping to them
+				
+				tracert =>will give the info of how many ways (routes) you use to connect it, it also gives the ip addresses
+				in detail, there are many servers of google and we can connect any of server to work with google, if the output is request timed out,means that 					particular server is busy , there are some output that from might you dont connect, there are 30 hops at max and if even that 30 ways you are unable 				to connect then it shows unable to connect.
+IANA =>Internet Assigned Numbers Authority => it is the one that giving ip addresses and tracking ip address to every device even when you use vpn ,it is th eone that give ip addresses.for jio,airtel for every communication.
+
+we  can ping to the virtual server we launched using it public address but we need to have a security rule called ICMP
+ICMP => Internet Control Massaging Protocol
+why ICMP?
+we need a protocol when we connect, in case of connecting to webpage of Linux or ubuntu we enabled http security rule, for ping we need to enable ICMP protocol,if ICMP is not allowed then ping and tracert are not worked
+VPC -virtual private cloud =>private/isolated network=>Deploy resources and get connect.
+---------------------afternoon----------------------------
+
+NETWORK - 
+
+
+how to write IP address
+
+  A class - N.H.H.H
+          N => network id - which doesn't change
+          H=> host ID=> continuously changing
+==>no ip address should start with zero.
+====================================================================
+=====IANA =>Internet Assigned Numbers Authority => it is the one that giving ip addresses and tracking ip address to every device even when you use vpn ,it is th eone that give ip addresses.for jio,airtel for every communication.
+
+we  can ping to the virtual server we launched using it public address but we need to have a security rule called ICMP
+ICMP => Internet Control Massaging Protocol
+why ICMP?
+we need a protocol when we connect, in case of connecting to webpage of Linux or ubuntu we enabled http security rule, for ping we need to enable ICMP protocol,if ICMP is not allowed then ping and tracert are not worked
+
+ipv4 => 8bits.8bits.8bits.8bits
+the maximum value for a octate is  8 1's(binary)  equivalent to 255 and minimum is  8 0's euivalent to zero => 0-255
+
+therefor total no of ipv4 addresses are : 4,29,49,67,296 => [ 256 x 256 x 256 x 256]
+
+
+Classful Addressing
+--------------------------
+here  N =network id =which is not changing
+H =host id =>keep changing
+eg ;; if there is a lab1 and there are 70 computers inside it
+how i locate the computer 2 in lab1 =>lab1-co2
+to locate the computer 3 in lab1 =>lab1-co3
+here computer number is changing but the lab no is not changing ,=> lab no is Nid and computer no is Hid.
+class A =0-127  => N.H.H.H[The network ID cannot start with 127 because 127 belongs to the class A address and is reserved for internal loopback functions. ]
+the eg address is => 1.0.0.0 (why not starts with 0 ? zero is reserved ,no address is started with zero)
+    increasing order             	 1.0.0.1.....1.0.0.255
+                   				 1.0.1.0
+                    				 1.0.1.1 ...1.0.1.255
+                   				 1.0.2.0 .....1.0.2.255
+						 1.0.3.0.....1.0.255.255
+						  ......     1.255.255.255
+if  i change the first octet then it violates the rule that Nid should not change
+Therefore the total addresses of Class A => 2 ^24 (3bytes(24 bits) are host)=>	16777216
+class B = 128-191 => N.N.H.H
+class C = 192 -223 => N.N.N.H
+class D = 224-239
+class E = 240 - 255
+VPC -virtual private cloud =>private/isolated network=>Deploy resources and get connect.**
+
+Unicast ,Multicast and Broadcast
+
+
+1.series
+pc0 - 257th ip address
+pc1 - 259th ip addres
+
+2.series
+pc2 - 100th ip add
+pc3 - 200th ip addre
+
+july -2
+
+A class - 1 - 127 networks
+  start - 1.0.0.0
+ last network IP - 127.255.255.255
+ total IP'S that A class can store -
+      each network can store - 1 * 255 *255 *255
+ total A class contains - 127 * each network can store
+                 =127 * 255*255*255
+                  =
+
+B class - N.N.H.H
+            start with - 128.0.0.0
+128.0.0.1
+....
+128.0.0.255
+128.0.1.0
+....
+128.0.255.0
+128.1.0.0
+----------
+128.1.0.1
+128.1.0.2
+128.1.0.3
+..
+128.1.0.255
+128.1.1.0
+128.1.2.0
+....
+128.1.255.0
+128.2.0.0
+128.3.0.0
+128.4.0.0
+128.255.0.0
+129.0.0.0
+
+N.N.H.H
+how many hosts per network - host/network
+128.0.0.0 - 128.0.255.255
+  = 255 * 255 = 65025 hosts per network
+
+
+last network in B class = 191
+last host in B class = 191.255.255.255
+                                          - 
+c -class:
+192 -223
+rule N.N.N.H
+last ip in c class - 223.255.255.255
+last network in c class - 223.255.255
+3rd network in class - 192.0.2
+last ip of 3rd nw=network - 192.0.2.255
+hosts / network - 256 hosts
+
+RESERVED IP's 
+
+Class A,B and C are used for Unicasting -> one to one communication
+1 – 223      =>Unicast
+224 – 239  =>Multicasting -> not accepted by general purpose ,not assigned to public , [Multicast ->	         one to group] eg: setup boxes.
+240 – 255 => BroadCasting =>used by standard institutons like IEEE ,IETF,IANA etc for  Research and           development and to test the devices.
+
+Although A,B,C class Ip address are used for general public, there are some reserved IP addresses In these classes
+In Class A =>   0 =>ip address of network, & c 127(all addresses with 127 network)  =>to check internally network working or not , reserved for loopback =always 
+active connection=>also to check the health of network card , when we ping with it ,if we don’t get reply then it means there if is problem with network card
+
+In Class B => 169.254.0.0 – 169.254.255.255   = reserved for APIPA =>Automatic Private IP Addressing
+DHCP => Dynamic Host Configuration Protocol – server – IP service
+If Dhcp is present then it assigns ip address or if DHCP fails then OS gives IP address (APIPA)
+
+
+n class A =127.0.0.1 - reserved-  loop back - to check network card health
+in class B =169.254.0.0 - to 169.254.255.255 - reserved for APIPA
+APIPA= automatic private IP addressing
+APIPA comes from DHCP 
+DHCP - Dynamic host configuration protocol -server - IP service
+  DHCP  server  gives the ip address to the mobile/laptop
+
+
+any IP that starts with 169.254 that says it had a problem with dhcp server
+on that time if user also not obtaining any IP address then computer requests the OS to give IP address .
+This is called APIPA
+
+JULY - 3
+ 
+we can't use ID's as a IP address's.
+
+NETWORK ID : every first IP OF the every network is known as the network ID.
+ ex: 192.223.123.1 - 
+      network ID of this one is = N.N.N.H
+                         first IP - 192.223.123.0 (IN VALID)- is the first IP of given network.
+                        This is called network ID.==IN VALID
+we can't use this network ID as a IP address
+
+BROADCAST ID : The last IP of the every network is called broadcast ID.
+                                              172.11.255.255 is the last IP of 172.11 th network.
+              so it is called the broadcast ID.We can't use these as the IP.
+
+
+
+ex: 192.150.10.0 - 
+no.of IP address that 192.150.10 network holds - 256(total/overall)
+out of 256
+no. of valid IP's = 256 - 2 
+                         =254
+no.of invalid IP's = 2 (network id and broadcast Id)
+no. of valid IP's = total IP's - invalid IP"s
+                        =  256 - 2 
+                         =254
+
+
+ex: 172.254.10.5
+this is class B - N..N.H.H
+network ID - 172.254.0.0
+broad cast ID - 172.254.255.255
+this are in-valid.
+
+
+Private IP and Public IP:
+
+After removing all the non valid ip addresses ,
+the left out ip addresses are categorized into Private and public ip addresses.
+Private IP’s => Internally, privaty ,  IANA standard for Private ip =>RFC1918 =private ip address range
+Public ip’s =>Provided by Internet Service Providers(ISP’s) and internet Ips
+IANA give Ips to ISPs and ISP provides the ip address ,IANA
+ can track the connections of Public IP but not its data.
+
+Epabx system => we call to  a number and that side a middle person(receptionist)  lifts call and route the call to end person
+Eg;Landlines uses this , Ekart.
+Intercom concept : similar to epabx system
+
+The middle man routes the call using a code /address called private addresses
+The ISPs provided addresses are public ip address
+In Aditya , there are only 15 public ip addresses , thousands of student connect to the public address using
+ private address and connect to the internet.
+
+Another example is , you can connect to internet when you turn on the data connection ,
+you will get a public address provided by ISPs and if you on the
+ hotspot ,your friend will connect to your public ip with an private ip and connect to the internet
+
+RFC1918     =Ranges of private addresses -exclusive range
+_-------------------------------------
+10.0.0.0 – 10.255.255.255
+172.16.0.0 – 172.31.255.255
+192.168.0.0 – 192.168.255.255
+
+Except this, remaining are valid addresses are Public ip addresses.
+
+July - 5
+
+1.Search for VPC
+2.click create VPC
+3. In VPC settings >select VPC only in Resources to create, then Give the name to the VPC 
+4.Give the IPv4 CIDR based on need eg: 192.168.1.0/24
+5.click on create VPC. =>your VPC is created
+
+Now we need to create the subnet
+
+1.click on subnet which is on left sidebar,
+2.click on create subnet > select the VPC (which we created previously).
+3.In subnet settings give Subnet name > give the ipv4 address for the subnet ,based on required hosts ,network no etc.,
+4. No need to change Availability Zone and IPV4 VPC CIDR block.
+
+what we did :: Created a VPC and inside the VPC , we created a subnet.
+Now Launch a Ec2 instance in the created Subnet
+
+To do that:
+1.go to Ec2 and click on launch instance>ec2 name>select OS image>create key pair
+2.In Network settings click on edit , and select the VPC you created in VPC required section > select the subnet.> select ENABLE in Auto assign public ip.
+3.Add security group rule>all ICMP ipv4 > 0.0.0.0/0 >save rule
+4.Click on Launch instance.
+
+if we try to ping it with >we get request timed out
+because here we only created VPC >subnet>Ec2 but if we want to connect it ,we need to create a Internet gateway and a Route table 
+
+Internet gateway =  to make connection between your system and the VPC => to create a gateway for the vpc.
+Route table = to create a gateway for the subnet 
+
+difference between Route table and gateway? No differences route table is nothing but a gateway but here the connection is different ,gateway is for vpc and route table is for subnet.
+
+INTERNET GATEWAY:
+-------------------------------
+click on Internet Gateway which presents in left sidebar in VPC section
+click on create internet gateway >give the name and create it.
+if we see the state of gateway it is in detached state, we need to attached it with VPC you create, For that click on Actions >click attach VPC.
+
+Route table:
+---------------
+Click on Route table which presents in left sidebar in VPC section.
+Click on create route table >in route table section ,give the name to it and select the VPC you created , then click create route table.
+Ater created , select it and click on actions and click on Edit subnet associations >select the subnet and click save association.
+
+now the router is associated with subnet like we did before connecting gateway to vpc, we create the path for request from your system to ec2
+now we need to create a path for response.
+
+To create the response path ,select the routes in bottom section >edit routes>add routes>give 0.0.0.0/0  in destination field (to make a path between the router and the internet) , select the target (target is nothing but your gateway which you had created) >save changes.
+
+Now we can ping with the Ec2 instance by simply using it public ip address.
+--------------------------------------------------------------------------------------------------------------------------------------
+July - 8 
+
+launch one windows server - (remember the availability zone of your instance)
+EC2 dash board  > elastic block store> volumes
+=> creation of volume (small disk partition)
+  .     ->make sure that the size of the volume must be small (because of student account)
+   ->availability zone of your volume and your instance must be same.
+ in that case only you will be able to attach the volume(disk partition) to your server.
+ click on create volume.
+Attaching the volume
+-->select the volume > go to actions > attach it
+ATTACH VOLUME
+-->select the instance that you are created.
+ -->device name - 1st one( xvdb)
+       click on attach volume.
+GO TO SERVER
+by default disk1 is offline
+disk 1(is our volume attached to our server) -
+     right click on disk one(1) - and make it online
+     right click again on disk 1 - install disk
+     right click on unallocated - select new simple volume 
+  and then next> next>...> finish it.
+ now in the this pc - you can able to see our new volume.
+ now you can able to create the files and directories in that new volume.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+July - 9
+application server - everyone can access like  facebook.com, technicalhub.com .if the application server was crashed we can easily create.
+database server - if you visit the facebook.com website everyone will see the commom website that will be stored in application server.
+if you want to login you account by using password all your personal data can be seen by you only.
+since All of our personal data can be stored in database server. ex:  personal accounts
+delete the volume that we created.
+-------------------------------------------------------------
+snapshot - used to restore the data we lost by deleting the volume(volume is nothing but virtual hard drive)
+   by using the snapshot we can able to backup the files or directories of the volume even if the volume was deleted
+creation of SNAPSHOT :
+
+EC2 dash board > elastic block store > click on create snapshots.
+==>create snap shots
+   ->select the volume that you are created 
+    and then create snapshot.
+
+after the creation of the snapshot. now we can able to backup the files that are present in the deleted volume. by the created snapshot.
+how : 
+goto snapshots> tick the snapshot that we are created. > go to actions
+click on create volume from snapshot > make sure that availability zone is same as like the our created instance.
+volume created - attach that volume .
+our deleted files will be backup. 
+----------------------------------------------------------
+                      
+object storage : 
+The object storage available in aws is known  as S3
+Simple storage service (s3) - 
+the main advantage of s3 is unlimited storage. (where block storage is upto 16TB(16000 gb) )
+inward - to s3 free (uploading)
+outward - from s3 charged(downloading)
+
+s3 -is built for different purposes. 
+   so we have different  storage tiers. - unlimited 
+STORAGE TIERS : 
+s3 standard  - daily storage needs (instantly data needed)
+s3 IA(infrequently accessing the data - less charge )
+ s3 one zone - IA (even less charge)
+s3 glacier - very infrequently accessing the data like once or twice in a year ) - very less expensive
+                   but it take more time to access - nearly 2hrs.
+s3 glacier deep archive - 5hrs
+
+==>apolo uses s3 standard ans s3 glacier
+s3 standard - for instantly access of patients data and
+s3 glacier - for dataset.
+--------------------------------------
+=> in the object storage data can be stored in the form of objects.
+            in amazon s3 the data stored in the form of buckets.
+           buckets are simply nothing but folders.
+
+
+
+
+
+---------------------------------------
+migrating data to the  cloud.
+
+s3 snow family - sending the data on premises to the cloud.(by intrenet) - takes more days simply impossible.
+                      - migrating 40 tb of data to the cloud is not possible.
+s3 snowball- this device copied the data . and migrates to data center and from datacenter upload the data from that device to s3            
+             bucket. 
+            - completely secure
+            - tb - pb   
+s3 snow mobile - these are used to migrate the data from pb - eb.
+                           discontinued. 
+                          -instead of the snow mobile now using more snow balls.
+---------------------------------------
+s3 - bucket creation
+search s3 in services.
+in amazon s3 - click on buckets.
+buckets > create bucket.- 
+            - bucketname - must be unique globally - mustnot contain special symbols
+            -disable the block all public access 
+           - and acknowledge it 
+            - and finally create bucket.
+
+uploading the objects( files/directories - simply data)
+             - click on bucket > upload > add files >
+              - upload finally
+-------------------------------------------------------------------------------------
+July - 10
+
+bucket created and giving permissions to that bucket to get more security :
+
+goto buckets > permissions>
+in permissions
+             ==> block all public access must be off (that means allowing public to visit ur url).
+if it is on edit and make it off.
+             ==>object ownership>edit > ACL 's enabled >acknowledge it >and 
+                         finally save it.
+                  =>Access control list ACL > edit >everyone public access >
+                                enable read and list > tick mark the I understand .
+                                  finally save it
+          ==> goto to object present in the bucket >mark the object >go to actions > goto  make public using ACL- make it   public . 
+               ==>click the object > in properties > copy the object url -   now u can browse it and u can able to download the uploaded file .
+
+ 
+other way of uploading  (drag and drop )
+  = >create the bucket and give permissions to that bucket.
+ = > click the bucket > now can upload objects from file manager by drag and drop > upload it .
+==>click the bucket u created > goto properties > static website hosting (go last) -edit it  - and  make it(-  enable.). >
+                                                                            > in the index document > give index.html (filename)
+                                                                             >save changes.
+==>select the objects that we created > go to actions >and make it public using ACL
+==>goto buckets > properties > static webhosting > copy link and browse it.
+       you will get the upload file.
+
+bucket versioning : 
+                    bucket versioning is known as
+        =>I created 1 bucket and i had uploaded 1 object(file)  in  that bucket. - (original file)
+        =>after enabling the bucket versioning that uploaded object will be saved as one version.
+               If i am not satisfied with that object then i can edit that object and reuploaded it.(edited file)
+         =>here newly uploaded object is another version.(current version)
+          =>old version is known as null.
+         => here the advantage is if u want go 1st uploaded object(original file) then u can simply permanently delete the newly edited file
+             then u can  get the old edited file by copying the url (static host website/object url)
+process of bucket versioning  :
+1) create one bucket and give permissions to that bucket.
+2)upload  1 file in that bucket. by add files
+3)make that objects public. 
+            =>  goto that file and copy the object url - u will get the uploaded file.
+                      or
+ 1)create the bucket and give permissions 
+2)upload one file by dragging from file manager.
+3)make that objects public access.
+   =>buckets > properties > enable  static website hosting>write index.html(file name)  >copy that url to get the uploaded file.
+
+-                   -------u can copy that url from anyways - 1)by bucket properties >static website hosting - copy url
+                                                                               -2) click the object(file) - copy object url
+
+actual versioning.
+4)go to buckets > properties >
+in properties 
+    -->enable the bucket versioning and save changes.
+     now goto 
+    s3>buckets > objects > go to index.html file(file name) -
+                  -in the index.html file > goto versions.>one version available by enableing the bucket versioning.(null)
+  copy the url from static website hosting u get the file (original) u uploaded.
+5)edit the index.html file in notepad/vs code and reupload it.(only index.html file)
+6) by reuploading the edited index.html file it replaces the original index.html file automatically in tha bucket.
+7) again make the index.html file public access.
+ 8)now when u click that index.html >goto versions 
+                                                      -  you can see 2 versions (original file (null) and reuploaded edited file(some id - current version)
+9)when u want to goto original file (null) simply u have to delete (permanently delete) current version.
+      then u will get the previous version null (original file) now null will the current version
+ copy the url - u will get the 1st uploaded file(null version) --
+------------------------------------------------------------------------------------------------------------------
+July - 11 and 12 
+we did labs (2.1 and 3.1)
+----------------------------------------------------------------------------------------------
+July -13
+
+aws security as a service
+-----------------------------------------------------------------------------------------------
+Containers
+
+ubuntu ec2 - instance
+--->
+apt-get update
+apt-get install docker.io
+docker --version
+docker ps
+docker images
+docker pull httpd
+docker run httpd
+
+
+docker stop container ID
+docker ps -a  - to see that stopped container
+docker start -d container ID
+--------------------------------------------------------------------
+apt-get update
+apt-get install docker.io
+docker --version
+docker ps
+docker images
+docker pull httpd
+docker run httpd
+
+
+docker stop container ID
+docker ps -a  - to see that stopped container
+docker start -d container ID
+
+
+docker run -d  httpd [directly pull and run] [ when you uses it new container created]
+
+docker exec -it {containerid} /bin/bash
+env [environment varbles path available here]
+
+docker run -d  -p80:80 httpd [giving port number 80 to the continer]
+
+docker cp {filename} containerid:{location in container}
+
+docker run -d  -p80:80 --name {anyname} httpd[the name changes and port number giving and creating container]------------------------------
+apt-get install zip
+unzip coffee 
+------------------------------------------------------------------------------
+apt-get update
+apt install docker.io
+
+docker run -d  -p80:80 --name {anyname} httpd
+-do zipfile
+apt-get install zip
+unzip filename
+docker cp {filename} containerid:{location in container} - from home/ubuntu if not goto zip file( docker cp assets d1751b3dcec0:/usr/local/apache2/htdocs)
+if you want location - docker exec -it {containerid} /bin/bash
+-----------------------------------------
+docker login
+=>docker commit containername/containerid  (userid of dockerhub)/application name  
+=>docker stop container id
+=>=>docker container prune
+=>docker rmi httpd(image id) 
+docker push username/rename
+(see inn the docker app to see your repository)
+docker rmi image - (to remove existing images )
+again pull that image from docker hub
+ =>docker push username/rename
+
+----------------------------------
+
+=>docker run <appname> -d -p
+=>docker push vasu057/my-app
+---------------------------------
+=>docker images(httpd / my-app)
+-------------------------
+docker login
+docker push vasu057/my-app
+
+
+vasu057 
+d1751b3dcec0
+
+
+d1751b3dcec0
+--------------------------------------------
+august - 23
+sql injection -  passwords hacked
+WEB FIREWALL
+----------------------------------
+
+Go to WAF&Shield
+in left pane go to ip set
+name ip set
+region should same as load balancer
+/32 means single ip
+/16 means 2 network
+/24 means 3 network
+/8 single network\
+mention those ip sets you want to block
+select create
+
+now go to web acl
+create webacl
+https - cloud front -Globally disposed
+regional resource for small
+select regional for now
+any name
+add load balancer 
+application load balancer 
+select and add
+click next
+ip set
+any name
+select ip set
+source ip address
+block
+add rule
+----------------------------------
+auto scalling
+create ec2 with image 
+crate image of ec2 by using create image
+remove reboot
+create image
+auto scaling - AWS SNS
+{email already
+sms already
+push notification alreat}
+go to sns
+select standard and close error message
+give name to topic
+go to topics check it
+go to subscription
+create subscription
+select topic
+select email protocol
+end point is email id
+click on create
+confirm in the email
+--ec2c>auto scaling >
+create auto scaling group >
+name to auto scaling -
+launch template - create to launch template or switch to launch configuration(sand box)
+   > click on switch to launch configuration > create the launch configuration.
+>AMI  -
+> chose instance  type - t2 micro
+>security group - security group of ec2 instance.
+>key pair options > ec2 key pair.
+>launch configuration. - select it
+
+
+----------------------------------------------
+launch ec2 instance with application
+create image
+create SNS topic and subscription
+create auto scaling launch configuration / launch template
+create load balancer and target group
+attach SNS topic to auto scaling
+define the desired / min /max capacity
+create auto scaling.
+--------------------
+apt-get install stress
+stress -c 1
+---------------------------------------
+--------------------------------------------------------------------------------------------------
+Jenkins free style
+Jenkins :
+
+
+    1  cd /
+    2  java --version
+    5  apt update
+   
+    installing java :  apt install openjdk-17-jre-headless
+=>      installing Jenkins (ubuntu) :
+
+		sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+=>jenkins --version
+=>systemctl status Jenkins
+public-ip(ubuntu):8080
+-------------------------------------------------
+CICD pipeline
+
+first go to the file where the code is
+git init
+git add .
+git status
+git commint -m "Message"
+go the git hub and create a repositry
+git branch -M main
+git remote add origin git@github.com:balaram555/Jenkins.git
+git push -u origin main
+
+in jenks do upto installation of java
+apt install maven
+apt install git
+
+Docker Installation ubuntu 24.04v:
+apt install docker.io
+usermod -aG docker jenkins
+systemctl start docker
+apt update
+apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+apt install docker-ce
+systemctl status docker
+Test the docker it is created or not
+docker run hello-world
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    1  apt-get update
+    2  java --version\
+    3  java --version
+    4  apt install openjdk-17-jre-headless
+    5  java --version
+    6  apt install maven
+    7  apt-install git
+    8  apt install git
+    9  apt install docker.io
+   =====>10  usermod -aG docker j
+   11  maven --v
+   12  maven --version
+   13  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+   14  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+   15  sudo apt-get update
+   16  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+   17  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+   18  sudo apt-get update
+   19  sudo apt-get install jenkins
+   20  jenkins --version
+   21  usermod -aG docker jenkins
+   23  systemctl start docker
+   24  apt update
+   25  apt install apt-transport-https ca-certificates curl software-properties-common
+   26  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   27  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+   30  apt-cache policy docker-ce
+   31  apt install docker-ce
+   36  systemctl status docker
+  
+   38  sudo systemctl restart docker
+   39  systemctl status docker
+   40  docker run hello-world
+   42  docker run hello-world
+   43  systemctl status docker
+   44  docker run hello-world
+   45  docker run hello-world
+   47  mkdir opt
+ 
+   51  cd /opt
+   52  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz
+   53  ls
+   54  tar xvzf apache-tomcat-9.0.98.tar.gz
+   55  ls
+   56  mv apache-tomcat-9.0.98/ tomcat9
+   57  ls
+   58  cd tomcat9
+   59  ls
+   60  cd bin
+   61  ls
+   62  sh startup.sh
+   63  ps aux | grep tomcat
+   64  netstat -tnlup |grep 8080
+   65  vim /opt/tomcat9/conf/server.xml
+   66  sh startup.sh
+   67  ss -tulnp | grep 9090
+   68  groupadd tomcat
+   69  useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+   70  chown -R tomcat:tomcat /opt/tomcat9
+   71  chmod -R 755 /opt/tomcat9
+   72  vi /etc/systemd/system/tomcat.service
+   73  sh startup.sh
+   74  systemctl daemon-reload
+   75  systemctl restart tomcat.service
+   76  systemctl status tomcat
+----------------------------------------------------------
+go to the jenkis 
+create a job
+select ci cd pipeline
+paste the code
+save it and build it
+next go to the dashboard 
+go to manage Jenkins
+go to plugins
+go to available plugins
+search for deploy for c
+install it
+Restart it
+----
+maven invoker
+maven integration
+deploy to cintainer
+-------------------------------------------------
+IP-addeeess:6060/maven-web-app
+
+

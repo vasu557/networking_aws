@@ -1,0 +1,444 @@
+
+NETWORKING:
+
+ it is two types:
+1)physical networking - devices  ,cables ,etc.
+2)logical networking - ip addresses
+https: submarinecablemap.com  - this website tells that how the regions are connected by the fibre optic cables.
+ workgroup model 
+ client -server  model - more secure
+
+
+COMMANDS :
+ipconfig- this command gives the ip address of our computer (windows os)
+ncpa.cpl - this command gives the network connections of our computer.
+ping - this command is used to check the connectivity between the two devices./
+                            ping ipaddress / ping website
+
+--------------------------------------------------------------------------
+Networking is everywhere
+Divides into two types
+Physical
+Logical
+
+	 Workgroup model  ( File or folder sharing )
+	Client server model  - gives services
+
+Sharing (
+Rdp  - remote desktop protocol
+Give the access – take the access
+Server – client only access
+
+
+End devices – pc, laptop, servers
+Intermediatory devices -    switches , routers,, hubs
+Connections -  wired, wireless	
+
+July - 9
+
+	 Three elements in communication (sender, receiver , channel) 
+	Encapsulation and De Encapsulation
+	Unicast (one to one) , Multicast (one to many) , Broadcast ( one to all)  [Message delivery opitons]
+	
+	Globalization – protocol suite (tcp /ip, iee ..)  -> 4 layers
+	Layered Model (OSI / iP) (Open system interconnection) -> 7 layer
+	7. Application    (whatsapp call) 
+	6. Presentation  (audio and video to encoded i.e, binary && encryption also ) 
+	5. Session (try to connect or starts a session b/w source and destionation) 
+	4. Transport   ( which type of communication i.e audio / video / text/ image )-> segment
+	3. Network ( 1024 packet to data link layer)  (header – data) 
+	2. Data Link (add source and destination – mac addresses(physical addresses) 
+	1. Physical (1024 frames)
+
+
+
+	Commands,
+	1) ipconfig (internet protocol configuration) 
+	2) ping  (packet internet groper)
+	3) tracert (trace route)
+	4) netstat( network status)
+
+
+
+	Tasks
+	1) Fille sharing
+	2)
+----------------------------------------------------------------------------------------------
+class -3 (July -10)
+physical layer : 
+ncpa.cpl - 
+devmgmt.msc -
+ports:
+ethernet port - physical cable (must have physical connection)
+    that physical connection is known as -rj - 45 port(registered jack)
+
+ethernet cables - these cables passes the electrical signals - 01
+               -  2 types
+UTP -  un-shielded twisted pair (once cut the outer layer doesn't have inner layers (no protection)
+       -These cables are used for indoor cabeling.
+      - less expensive (because no protection)
+      - doesnot exposed to the atmosphere.- underneath (may damages because no inner layers )
+
+STP - Shielded twisted pair(once cuts the outer-layer u can see inner layer(having protection) to the connection .
+           - used for the outdoor cabeling.
+          - expensive compared to UTP cables .
+          - exposed to atmosphere.
+            - doesn't effects (having inner layers of protection)
+
+color coding - T568A
+                   - T568B
+ These color codings are responsible to transfer the files from source to destination.
+if there any damages occur to this cables. communication can't possible.
+
+
+T568A ----------------------------------------- T568A
+T568B ------------------------------------------T568B
+        = these are straight cables.
+=>straight cables are used to connect devices in network.
+These are used   if both ends are different devices.
+  ex :  switch ---------------computer (switch and computer are different devices.)
+
+
+T568A-----------------------------------------T568B
+T568B-----------------------------------------T568A
+         - these are cross cables.
+         - cross cables are used to connect the same devices on both ends.
+ex  : computer -------------------- computer.(computer and computer are same on both ends )
+
+
+repeater -  is also a half duplex device.
+=>previously we were used repeaters instead of switches .
+=>it is also a lauyer -1 device
+hub : 
+=.>hub is a broadcasting device (1 to all communication)
+=>hub is a layer 1 device (interview ques)
+=>it is physical layer.
+=>hub is a uni-way communication.
+=>half duplex device(like voki - toki)
+     - hub can't do multiple things at a time.
+    -either it can send information or recive information.
+=>security concern. - because it sending signal to every device.
+hubs is a physical device. - layer 1 device (interview ques)
+
+switch  ;
+ => datalink layer - layer 2
+=> it overcome the problem of hub
+=>switch is a unicasting device
+=>it is full duplex device - (like mobile)
+    - it can do multiple operations at a time.
+    -  it can send and receive information at a time.
+ =>it is binary  way communication.
+=>switch doesn't know about ip address. 
+=>It know only mac address.(physical address is known as mac address) 
+=>mac address constant fixed while manufacturing
+=>having security
+--------------------------------------------------------------------------------------------
+July  -11 (class - 4)
+how switch works : 
+red - icmp (second - unicast) - ping (internet control messaging protocol)
+blue - arp (first - broadcast) -  (address resolution protocol) 
+resolution - mapping mac address to ip address
+       - arp packet doesn't have any information.
+it broadcast to every one and bring back the mac address of destination device and gives to switch. 
+      - and then switch send the data to destination computer by icmp packet.
+
+=>total ports in switches - 24
+out of 24 - 2 are gB ports
+  ports or interfaces both are same
+
+switches are two types :
+ unmanaged switch - no configuration -  we can't change the switch settings
+  in real time these unmanaged switches are not used because to work with switches it must be configured(managed).
+managed switches - customized switches
+                                 we can able to configure these managed switches.
+                                 - these managed switches are works in real time
+
+configuring the switch :  
+
+console cable
+
+
+
+in switch we have 3 modes in terminal
+1)user execution mode (>) - default mode.
+  - to goto user execution mode - prevalized mode - use the command enable
+    command - enable- user execution - prevalized mode
+2)privileged execution(#) -in the mode also u can't able to configure.
+      in this only monitering commands will work.
+      like checking/verifying
+by using configure terminal command we can go to global configuration mode.
+3)global configuration mode - the global configuration is actual mode where the configuration we can manage.
+                                  in the global configuration mode only we can able to configure the switch
+
+commands :
+ 1)show ip interface brief - to show all the ports of the switch
+     this command works only on 2nd mode(previlized mode)
+ go to global configuration mode(3rd mode ) by using - configure terminal command
+   from there we can change the host name.
+2)hostname vasu - to change the host name.(works only on 3rd mode)
+3)interface FastEthernet 0/3( Fastethernet port number) - by using this command u can able to goto that fastethernet port.
+ex : interface FastEthernet 0/3 (fast ethernet port ) -(config - if ) - indicates that you are in fastethernet port.
+     after going that port - you can shutdown that port by using SHUTDOWN command.
+         4)shutdown - this command used to shutdown the port.
+          5)no shutdown - this command changes the shutdown state to working state.
+when we want to shutdown the multiple ports at a time .
+ 6)interface range fastethernet 0/1-10 - we can goto these ports range at a time.
+   (config-if-range) - shutdown - by using this command we can shutdown all these ports at a time.
+ again noshutdown - by using no shutdown command                                  -
+--------------------------------------------------------------------------------------------
+July - 12 (class -5)
+
+=>we can able to increase the protecton of switches by giving the passwords to the switches.
+password (password name)
+login
+exit
+
+2nd mode:
+=>enable password password_name :
+ exit
+
+=>we have two storages in switch:
+ram -  temp - running configuration (when restart it running configuration will be lost )
+nvram - non volatile ram - permanent
+ios - nv-ram
+
+ip address ;router
+->is called the logical address
+->network layer (3rd layer )
+->ip add can be changing based on the regions. - modified
+we have  mainly two types of ip veersions :
+-ipv4
+-ipv6
+--------------
+works in 2nd mode : 
+running-config - present running configurations storage.
+startup-config - permanent storage
+to transfer the present running configurations to the permanent storage we are using the
+copy running-config startup-config command.(simply saving the present running the configuration)
+==>show running-config ; this command shows the which configuration u ttransfer  from running-config to the startup-config
+
+=>service password-encreption (3rd mode): it encrept the passwords that what we had created.
+and to see that encrypted password we use show running-config.(in 2nd mode)
+==> all the show commands works on 2nd mode.
+==>all the configure commands works only on 3rd mode
+
+3rd mode ; -set passwords only on 3rd mode.
+ line console 0 
+password password_name - giving password to login
+exit 
+
+==.comands - line console 0
+                      password name of password 
+                      login 
+                        exit 
+=>enable password pass-name ; giving password to the 2nd mode
+exit 
+=>try to enter 2nd mode it asks password:
+
+
+
+copy running-config startup-config
+show running-config
+service password-encryption
+---------------------
+july -13
+ =>IP addressing concept :
+------------------------------------------
+
+
+-----------------------------------------
+126.56.76.56 = 
+class = class A
+netwotk id = 126.0.0.0
+broadcast id = 126.255.255.255
+last usable ip = 126.255.255.254
+257th usable ip = 126.0.1.1
+---------------------------------------- 
+SUBNET MASK ; The computer understands the range of the network based on the subnet mask.
+                                         communication is based on subnet mask.
+N.H.H.H - 255.0.0.0
+N.N.H.H - 255.255.0.0
+N.N.N.H - 255.255.255.0
+
+1 - NETWOTK BITS (telling the cimputer to match then only communication is possible.
+0 - HOST BITS - ignore matching direct communicate. (0.0.0.0./0)
+
+
+subnet - uses :
+ =>network - subnetwork
+ i)reducing the wastage of ip address.
+2)security
+3)performance.(500 servers - switch broadcasting )
+-------------------------------------------------------------------------------------
+Subnetting: this subnetting is called as flsm
+FLSM - fixed length sub mask
+
+Requirement - 60
+Nearest value -2^h - 2^6 -64
+new subnet mask -255.255.255.11000000
+                -255.255.255.192 /26
+
+No. of hosts:64
+
+No. of networks:2^n - n -converted network bits :2^2 - 4
+
+64 IPs
+4 networks - 256 overall
+range - 2^h -  64
+192.168.0.0 - 192.168.0.63
+192.168.0.64- 192.168.0.127
+       .0.128-        .0.191
+       .0.192-        .0.255
+-----------------------------------------------------------------------
+req - 30
+nearest value - 2^h - 2^5 - 32
+new subnet mask - 255.255.255.0 (requ = 30 <256 this is class c)
+                           - 255.255.255.00000000
+                          -255.255.255.11100000                   (out of 8 network bits 5 are host bits (2^5 - required - remaining are network bits (change it )  )
+              - 255.255.255.224
+
+no. of   hosts : 32
+no. of networks : 2^n  - 2^3 =8
+32 ips :
+
+-----------------------------------------
+req - 1000
+
+nearest value - 2^10 - 1024
+                       
+11111111.11111111.11111100.00000000
+
+255.255.252.0 /22
+
+no.of hosts    	no.of networks
+
+2^h-2^10 1024 2^n - 2^n -
+
+
+writing the range - 2^h - 1024
+
+190.10.0.0 - 190.10.3.255
+190.10.4.0 - 190.10.7.255
+190.10.8.0 -  190.10.11.255
+190.10.12.0 - 190.10.15.255
+---------------------------------------------------------------------------------
+req = 2000  n n h h
+nearest - 2 ^ 11  - 2048
+11111111.11111111.11111000.00000000 / 21
+
+ 255.255.248.0 /21 -subnet
+no. of hosts - 2 ^11 - 2048
+no. of networks - 2^5 - 32
+ range - 
+ 160.1.0.0 - 160.1.7.255
+160.1.8.0 - 160.1.15.255
+160.1.16.0 - 160.1.23.255 - 3rd network
+160.1.24.0 - 160.1.31.255
+160.1.32.0 - 160.1.39.25
+-----------------------------------------------
+July - 18 (CCNA)
+=>switches can be used when you want to communicate the devices present in the same network.
+communication can't possible if devices are in different network.
+       - This problem can be overcome by routers (layer 3 devices)
+layer - 3
+routers - 2 doors - interfaces
+
+1st network -switch(fastethernet) - router (gig 0/0/0)
+ 2nd network  - switch(fastethernet - router(gig 0/0/1)
+pc(rj 232) - router(console)- console cable -
+ =>only one console cable is enough to configure.
+-------------------------------------------
+vlsm - variable length subnet mask
+-----------------------------------------------------------------
+June -19 (absent) - ipv6 and iana concept
+-----------------------------------------------------
+July  - 20
+
+2001:0db8:acad: abcd : 0000 : 0000: 0000 : 0001 /32
+aggregate -
+2001: db8 :acad:abcd ::0001 /32
+-----------------------------------
+            ipv4           ipv6                               range
+public - internet - global unicast address - 2000::/3
+private-intranet  - unique local address- FC00::/7
+apipa   - link local address - FE80::/10
+default address - link address.
+-----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+cmd
+devmgmt.msc-
+msinfo32 - detailed information completely
+diskmgmt.msc - to know the partitions of disk
+dxdiag - completely information about graphic card(about multimedia)

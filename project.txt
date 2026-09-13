@@ -1,0 +1,148 @@
+I understand that the CloudWatch UI might have changed. Here’s an updated step-by-step guide to creating automatic backups using a Lambda function for an RDS instance, considering the new CloudWatch UI. This includes the creation of an RDS instance, an EC2 instance running Ubuntu, an IAM role for Lambda, and setting up CloudWatch Events to trigger the Lambda function.
+
+Step 1: Create an RDS Instance
+Log in to the AWS Management Console:
+
+Navigate to the RDS Console.
+Create a new RDS instance:
+
+Click on "Create database."
+Choose "Standard Create."
+Select the database engine (e.g., MySQL, PostgreSQL).
+Choose the DB instance size (e.g., db.t3.micro for free tier).
+Configure the database settings:
+DB instance identifier: mydbinstance
+Master username: admin
+Master password: yourpassword
+Configure additional settings as needed.
+Click "Create database."
+Wait for the RDS instance to be available.
+
+Note the DB instance identifier (mydbinstance).
+Step 2: Create an EC2 Instance (Ubuntu)
+Log in to the AWS Management Console:
+
+Navigate to the EC2 Console.
+Launch an EC2 instance:
+
+Click "Launch Instance."
+Choose an Amazon Machine Image (AMI), e.g., "Ubuntu Server 20.04 LTS."
+Choose an instance type (e.g., t2.micro for free tier).
+Configure the instance details as needed.
+Add storage and configure security groups.
+Allow SSH (port 22) and MySQL/Aurora (port 3306) from your IP.
+Launch the instance and download the key pair.
+
+
+Step 3: Set Up the IAM Role for Lambda
+
+Create an IAM Role:
+Go to the IAM Console.
+Click "Roles" and then "Create role."
+Choose "Lambda" as the trusted entity.
+Attach the following policies:
+AWSLambdaBasicExecutionRole
+AmazonRDSFullAccess
+Name the role, e.g., LambdaRDSBackupRole.
+
+
+Step 4: Create the Lambda Function
+Create a Lambda function:
+Go to the Lambda Console.
+Click "Create function." 
+Choose "Author from scratch."
+Set the following:
+Function name: CreateRDSSnapshot
+Runtime: Python 3.9 (or any supported version)
+Permissions: Choose the IAM role created in step 3.
+Click "Create function."
+Add the Lambda function code:
+
+Use the following Python code:
+python
+Copy code
+
+import boto3
+from datetime import datetime
+def lambda_handler(event, context):
+    rds_client = boto3.client('rds')
+
+    # Replace with your RDS instance identifier
+    db_instance_identifier = 'mydbinstance'
+
+    snapshot_identifier = f"{db_instance_identifier}-snapshot-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
+    
+    try:
+        response = rds_client.create_db_snapshot(
+            DBSnapshotIdentifier=snapshot_identifier,
+            DBInstanceIdentifier=db_instance_identifier
+        )
+        print(f"Snapshot created: {snapshot_identifier}")
+    except Exception as e:
+        print(f"Error creating snapshot: {e}")
+
+    return {
+        'statusCode': 200,
+        'body': f"Snapshot created: {snapshot_identifier}"
+    }
+Replace 'mydbinstance' with your RDS instance identifier.
+Save the changes.
+
+
+Step 5: Create a CloudWatch Event Rule
+Create a CloudWatch Event rule:
+Go to the CloudWatch Console.
+In the navigation pane, choose "Rules" under "Events."
+Click "Create rule."
+Under "Rule type," select "Event Source" and then "Schedule."
+Set the schedule to rate(1 hour).
+=>
+Under "Select targets," choose "Add target"- (no need to add)
+Select "Lambda function" from the target list.
+Choose your Lambda function (CreateRDSSnapshot).
+Click "Next."
+Enter a name and description for the rule.
+Click "Create rule."
+Step 6: Verify the Setup
+Verify the Lambda function:
+
+Go to the Lambda Console.
+Test the Lambda function to ensure it creates a snapshot successfully. - test that
+Check CloudWatch Events:
+
+Ensure that the CloudWatch rule triggers the Lambda function every hour.
+Optional: Connect EC2 Instance to RDS
+Connect from the EC2 instance to the RDS instance:
+SSH into your EC2 instance.
+Install a database client (e.g., mysql for MySQL).
+Connect to the RDS instance using the endpoint, username, and password.
+By following these steps, you'll have an automated backup system for your RDS instance using AWS Lambda, triggered every hour by CloudWatch Events.
+--------------------------------------
+
+import boto3
+from datetime import datetime
+
+def lambda_handler(event, context):
+    rds_client = boto3.client('rds')
+
+    # Replace with your RDS instance identifier
+    db_instance_identifier = 'mydbinstance'
+
+    snapshot_identifier = f"{db_instance_identifier}-snapshot-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
+    
+    try:
+        response = rds_client.create_db_snapshot(
+            DBSnapshotIdentifier=snapshot_identifier,
+            DBInstanceIdentifier=db_instance_identifier
+        )
+        print(f"Snapshot created: {snapshot_identifier}")
+    except Exception as e:
+        print(f"Error creating snapshot: {e}")
+
+    return {
+        'statusCode': 200,
+        'body': f"Snapshot created: {snapshot_identifier}"
+    }
+
+
+Replace 'mydbinstance' with your actual RDS instance identifier.
